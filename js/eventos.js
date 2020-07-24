@@ -34,9 +34,6 @@ function capturarDatosUser(event) {
     contadorTareas++;
 }
 
-
-
-
 function paintTarea(pTarea) {
     seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3">
     <div class="row">
