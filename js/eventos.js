@@ -14,25 +14,33 @@ function capturarDatosUser(event) {
     let tareas = inputTarea.value;
     let prioridades = inputPrioridad.value;
 
-    /*  console.log(tareas, prioridades); */ //1ªcomprobación. Se pintan los resultados en la consola
+    if (tareas.trim() != "" && prioridades.trim() != "") {/* si los dos campos estan vacuis */
 
-    const newTarea = {
-        id: contadorTareas,
-        tarea: tareas,
-        prioridad: prioridades
+        /*  console.log(nombre, aficion); //Con esto, la información que metes en el formulario se pinta en consola */
+
+        const newTarea = {
+            id: contadorTareas,
+            tarea: tareas,
+            prioridad: prioridades
+        }
+
+        saveTarea(newTarea);
+        paintTarea(newTarea);
+
+
+    } else {
+        alert('Es obligatorio rellenar todos los campos');
     }
 
-    //esta función se encuentra declarada en funciones.js, al no estar en el front
-    saveTarea(newTarea);
-
-    //esta función se queda en eventos.js, porque trabaja con la interfaz
-    paintTarea(newTarea);
-
-    //para vaciar los campos una vez metido un resultado
     inputTarea.value = "";
     inputPrioridad.value = "";
     contadorTareas++;
-}
+
+};
+
+
+
+
 
 function paintTarea(pTarea) {
     seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3">
