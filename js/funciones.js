@@ -1,10 +1,29 @@
 function saveTarea(pTarea) {
-    tarea.push(pTarea);
+    duties.push(pTarea);
 }
 
 function borrar(pId) {
     let id = parseInt(pId);
-    let posicionEliminar = tarea.findIndex(tarea => tarea.id == id);
+    let posicionEliminar = duties.findIndex(duties => duties.id == id);
 
-    tarea.splice(posicionEliminar, 1);
+    duties.splice(posicionEliminar, 1);
+}
+
+function buscarXNombreTarea(pListaTareas, pDuty) {
+    let listaXNombre = new Array();
+
+    listaXNombre = pListaTareas.filter(duties => {
+        let tareaDuties = duties.tarea.toLowerCase();
+        return tareaDuties.includes(pDuty);
+    })
+
+    return listaXNombre;
+}
+
+function filtrarXPrioridad(pListaTareas, pPrioridad) {
+    let listaXPrioridad = new Array();
+
+    listaXPrioridad = pListaTareas.filter(duties => duties.prioridad == pPrioridad);
+
+    return listaXPrioridad;
 }

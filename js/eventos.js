@@ -6,6 +6,10 @@ let inputPrioridad = document.getElementById('prioridad');
 let contadorTareas = 2;
 let seccionTareas = document.querySelector('.pintar');
 
+
+
+
+
 botonGuardar.addEventListener('click', capturarDatosUser);
 
 function capturarDatosUser(event) {
@@ -40,9 +44,7 @@ function capturarDatosUser(event) {
 
 
 
-
-
-function paintTarea(pTarea) {
+function paintTarea(pTarea) { /* PINTA UNA TAREA */
     seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3">
     <div class="row">
         <div class="col-9">
@@ -58,7 +60,7 @@ function paintTarea(pTarea) {
     </div>
 </div>`}
 
-function paintTareas(pListaTareas) {
+function paintTareas(pListaTareas) { /* PINTA LA LISTA DE TAREAS */
     seccionTareas.innerHTML += "";
 
     pListaTareas.forEach(tarea => {
@@ -74,6 +76,54 @@ function borrarTarea(pTareaBorrar) {
 
 }
 
+paintTareas(duties);
 
-paintTareas(tarea);
+//FILTROS
+
+
+let btnBuscarTarea = document.querySelector('#buscadordetarea');
+let inputTareaXNombre = document.querySelector('#nombredetarea');
+
+
+btnBuscarTarea.addEventListener('click', capturarBusquedaTareas);
+
+function capturarBusquedaTareas(event) {
+    let nombreTarea = inputTareaXNombre.value.toLowerCase();
+
+    /* console.log(nombreTarea); //en consola se pinta */
+
+    let listaFiltradaXTarea = buscarXNombreTarea(duties, tarea);
+    paintTareas(listaFiltradaXTarea);
+}
+
+
+//Filtro por prioridad. Consigo que me aparezcan las tareas que he filtrado pero no me desaparecen las otras 
+
+let selectPrioridad = document.querySelector('#buscarPrioridad');
+
+selectPrioridad.addEventListener('change', capturarPrioridad);
+
+function capturarPrioridad(event) {
+    let prioridad = event.target.value;
+
+    let listaFiltradaXPrioridad = filtrarXPrioridad(duties, prioridad);
+    paintTareas(listaFiltradaXPrioridad);
+
+
+}
+//revisar
+/* function paintTarea(pListaTareas) {
+    pListaTareas.innerHTML += "";
+}
+ */
+
+//filtro buscador 
+
+
+
+
+
+
+
+
 
