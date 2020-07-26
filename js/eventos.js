@@ -18,7 +18,7 @@ function capturarDatosUser(event) {
     let tareas = inputTarea.value;
     let prioridades = inputPrioridad.value;
 
-    if (tareas.trim() != "" && prioridades.trim() != "") {/* si ninguno de los dos campos estan vaciod */
+    if (tareas != "" && prioridades != "" && prioridades != "Selecciona una prioridad") {/* si ninguno de los dos campos estan vaciod */
 
         /*  console.log(nombre, aficion); //Con esto, la información que metes en el formulario se pinta en consola */
 
@@ -30,14 +30,12 @@ function capturarDatosUser(event) {
 
         saveTarea(newTarea);
         paintTarea(newTarea);
-
-
     } else {
         alert('Es obligatorio rellenar todos los campos');
     }
 
     inputTarea.value = "";
-    inputPrioridad.value = "";
+    inputPrioridad.value = "Selecciona una prioridad";
     contadorTareas++;
 
 };
@@ -96,39 +94,64 @@ paintTareas(duties);
 
 //FILTROS
 
-//filtro buscador 
+//filtro por buscador 
 
 let btnBuscarTarea = document.querySelector('#buscadordetarea');
 let inputTareaXNombre = document.querySelector('#nombredetarea');
 
 
-btnBuscarTarea.addEventListener('click', capturarBusquedaTareas);
+/* btnBuscarTarea.addEventListener('click', capturarBusquedaTareas); */
 
-function capturarBusquedaTareas(event) {
+/* function capturarBusquedaTareas(event) {
     let nombreTarea = inputTareaXNombre.value.toLowerCase();
 
-    /* console.log(nombreTarea); */  //en consola se pinta 
+    console.log(nombreTarea);  //en consola se pinta 
 
-    let listaFiltradaXTarea = buscarXNombreTarea(duties, tarea);
+    let listaFiltradaXTarea = buscarXNombreTarea(duties, nombreTarea);
+    seccionTareas.innerHTML = "";
     paintTareas(listaFiltradaXTarea);
-}
+} */
 
 
 //Filtro por prioridad. Consigo que me aparezcan las tareas que he filtrado pero no me desaparecen las otras 
 
 let selectPrioridad = document.querySelector('#buscarPrioridad');
 
-selectPrioridad.addEventListener('change', capturarPrioridad);
+/* selectPrioridad.addEventListener('change', capturarPrioridad); */
 
-function capturarPrioridad(event) {
+/* function capturarPrioridad(event) {
     let prioridad = event.target.value;
 
-    let listaFiltradaXPrioridad = filtrarXPrioridad(duties, prioridad);
-    seccionTareas.innerHTML = "";
-    paintTareas(listaFiltradaXPrioridad);
-    console.log(listaFiltradaXPrioridad);
+    if (prioridad != "Selecciona una prioridad") {
+        let listaFiltradaXPrioridad = filtrarXPrioridad(duties, prioridad);
+        seccionTareas.innerHTML = "";
+        paintTareas(listaFiltradaXPrioridad);
+    } else {
+        paintTareas(duties);
+    }
+    }
+ */
 
+//Junto ambos filtros
+
+selectPrioridad.addEventListener('change', capturarPrioridadTarea);
+btnBuscarTarea.addEventListener('click', capturarPrioridadTarea);
+function capturarPrioridadTarea(event) {
+    let prioridad = selectPrioridad.value;
+    let nombreTarea = inputTareaXNombre.value.toLowerCase();
+
+    if (prioridad != "Selecciona una prioridad") {
+        let listaFiltradaXPrioridad = filtrarXPrioridad(duties, prioridad);
+        let listaFiltradaXTarea = buscarXNombreTarea(listaFiltradaXPrioridad, nombreTarea);
+        seccionTareas.innerHTML = "";
+        paintTareas(listaFiltradaXTarea);
+    } else {
+        let listaFiltradaXTarea = buscarXNombreTarea(duties, nombreTarea);
+        seccionTareas.innerHTML = "";
+        paintTareas(listaFiltradaXTarea);
+    }
 }
+
 
 
 
