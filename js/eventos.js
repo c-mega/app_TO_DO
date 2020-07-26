@@ -45,32 +45,30 @@ function paintTarea(pTarea) { /* PINTA UNA TAREA */
     let priorityColor = "";
     switch (pTarea.prioridad.toLowerCase()) {
         case "urgente":
-            priorityColor = "red";
+            priorityColor = "#f52d2d";
             break;
         case "diaria":
-            priorityColor = "yellow";
+            priorityColor = "#ffff00";
             break;
         case "mensual":
-            priorityColor = "green";
+            priorityColor = "#00f3ff";
             break;
         default:
             break;
     }
 
-    seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3" style="background-color: ${priorityColor}">
-    <div class="row">
-        <div class="col-9">
-            <div class="card-body">
-                <p class="card-text">${pTarea.tarea}</p>
-                <p class="card-text">${pTarea.prioridad}</p>
-            </div>
-        </div>
-        <div class="col-3">
-            <a href="#" onclick="borrarTarea('tarea_${pTarea.id}')" class="btn btn-danger"
-                style="float: right;">Eliminar</a>
-        </div>
-    </div>
+    seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="col-12 col-lg-12 navbar navbar-light" style="background-color: ${priorityColor}; width: 100%; border: 1px dotted black;">
+  
+    <nav class="navbar navbar-light">
+    <p class="navbar-brand">${pTarea.tarea}</p>
+    <p class="navbar-brand"> ${pTarea.prioridad} </p>
+    <form class="form-inline">
+    <a href="#" onclick="borrarTarea('tarea_${pTarea.id}')" class="btn btn-danger";>Eliminar</a>
+    </form>
+</nav>
 </div>`}
+
+
 
 function paintTareas(pListaTareas) { /* PINTA LA LISTA DE TAREAS */
     seccionTareas.innerHTML += "";
