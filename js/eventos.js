@@ -45,13 +45,13 @@ function paintTarea(pTarea) { /* PINTA UNA TAREA */
     let priorityColor = "";
     switch (pTarea.prioridad.toLowerCase()) {
         case "urgente":
-            priorityColor = "#f52d2d";
+            priorityColor = "#f96d6d";
             break;
         case "diaria":
-            priorityColor = "#ffff00";
+            priorityColor = "#fff796";
             break;
         case "mensual":
-            priorityColor = "#00f3ff";
+            priorityColor = "#72e5a1";
             break;
         default:
             break;
@@ -59,10 +59,10 @@ function paintTarea(pTarea) { /* PINTA UNA TAREA */
 
     seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="col-12 col-lg-12 navbar navbar-light" style="background-color: ${priorityColor}; width: 100%; border: 1px dotted black;">
   
-    <nav class="navbar navbar-light">
+    <nav class="navbar navbar-light col-lg-11">
     <p class="navbar-brand">${pTarea.tarea}</p>
     <p class="navbar-brand"> ${pTarea.prioridad} </p>
-    <form class="form-inline">
+    <form class="form-inline col-lg-1">
     <a href="#" onclick="borrarTarea('tarea_${pTarea.id}')" class="btn btn-danger";>Eliminar</a>
     </form>
 </nav>
