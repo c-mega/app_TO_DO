@@ -18,7 +18,7 @@ function capturarDatosUser(event) {
     let tareas = inputTarea.value;
     let prioridades = inputPrioridad.value;
 
-    if (tareas.trim() != "" && prioridades.trim() != "") {/* si los dos campos estan vacuis */
+    if (tareas.trim() != "" && prioridades.trim() != "") {/* si ninguno de los dos campos estan vaciod */
 
         /*  console.log(nombre, aficion); //Con esto, la información que metes en el formulario se pinta en consola */
 
@@ -43,7 +43,23 @@ function capturarDatosUser(event) {
 };
 
 function paintTarea(pTarea) { /* PINTA UNA TAREA */
-    seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3">
+
+    let priorityColor = "";
+    switch (pTarea.prioridad.toLowerCase()) {
+        case "urgente":
+            priorityColor = "red";
+            break;
+        case "diaria":
+            priorityColor = "yellow";
+            break;
+        case "mensual":
+            priorityColor = "green";
+            break;
+        default:
+            break;
+    }
+
+    seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3" style="background-color: ${priorityColor}">
     <div class="row">
         <div class="col-9">
             <div class="card-body">
