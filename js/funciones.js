@@ -9,21 +9,24 @@ function borrar(pId) {
     duties.splice(posicionEliminar, 1);
 }
 
-function buscarXNombreTarea(pListaTareas, pDuty) {
-    let listaXNombre = new Array();
 
-    listaXNombre = pListaTareas.filter(duties => {
-        let tareaDuties = duties.tarea.toLowerCase();
-        return tareaDuties.includes(pDuty);
-    })
 
-    return listaXNombre;
-}
-
+//Funcion filtrar por prioridad: funciona pero no me vacia la lista, sino que aparece lo filtrado junto a las tareas que ya están
 function filtrarXPrioridad(pListaTareas, pPrioridad) {
     let listaXPrioridad = new Array();
 
     listaXPrioridad = pListaTareas.filter(duties => duties.prioridad == pPrioridad);
 
     return listaXPrioridad;
+}
+
+//Funcion buscador por nombre: NO FUNCIONA, solo lo lee por consola y 
+function buscarXNombreTarea(pListaTareas, pTarea) {
+    let listaFiltrada = new Array();
+    listaFiltrada = pListaTareas.filter(duty => {
+        let nombreTarea = duty.tarea.toLowerCase();
+        return nombreTarea.includes(pTarea);
+    })
+
+    return listaFiltrada;
 }

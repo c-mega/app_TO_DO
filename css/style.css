@@ -1,0 +1,25 @@
+div h1 {
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 50px;
+   
+}
+.container-fluid {
+    margin: 20px ;
+  align-items: center;
+}
+
+#guardar {
+    margin: 10px;
+}
+select .urgente {
+    background-color: tomato;
+}
+
+select .diaria {
+    background-color: yellow;
+}
+
+select .mensual {
+    background-color: rgb(94, 243, 94);
+}  

@@ -42,8 +42,6 @@ function capturarDatosUser(event) {
 
 };
 
-
-
 function paintTarea(pTarea) { /* PINTA UNA TAREA */
     seccionTareas.innerHTML += `<div data-id="${pTarea.id}" id="tarea_${pTarea.id}" class="card mb-3">
     <div class="row">
@@ -78,8 +76,11 @@ function borrarTarea(pTareaBorrar) {
 
 paintTareas(duties);
 
+
+
 //FILTROS
 
+//filtro buscador 
 
 let btnBuscarTarea = document.querySelector('#buscadordetarea');
 let inputTareaXNombre = document.querySelector('#nombredetarea');
@@ -90,7 +91,7 @@ btnBuscarTarea.addEventListener('click', capturarBusquedaTareas);
 function capturarBusquedaTareas(event) {
     let nombreTarea = inputTareaXNombre.value.toLowerCase();
 
-    /* console.log(nombreTarea); //en consola se pinta */
+    /*  console.log(nombreTarea); */ //en consola se pinta 
 
     let listaFiltradaXTarea = buscarXNombreTarea(duties, tarea);
     paintTareas(listaFiltradaXTarea);
@@ -109,15 +110,11 @@ function capturarPrioridad(event) {
     let listaFiltradaXPrioridad = filtrarXPrioridad(duties, prioridad);
     paintTareas(listaFiltradaXPrioridad);
 
-
 }
-//revisar
-/* function paintTarea(pListaTareas) {
-    pListaTareas.innerHTML += "";
-}
- */
 
-//filtro buscador 
+
+
+
 
 
 
