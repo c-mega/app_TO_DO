@@ -107,7 +107,7 @@ btnBuscarTarea.addEventListener('click', capturarBusquedaTareas);
 function capturarBusquedaTareas(event) {
     let nombreTarea = inputTareaXNombre.value.toLowerCase();
 
-    /*  console.log(nombreTarea); */ //en consola se pinta 
+    /* console.log(nombreTarea); */  //en consola se pinta 
 
     let listaFiltradaXTarea = buscarXNombreTarea(duties, tarea);
     paintTareas(listaFiltradaXTarea);
@@ -124,7 +124,9 @@ function capturarPrioridad(event) {
     let prioridad = event.target.value;
 
     let listaFiltradaXPrioridad = filtrarXPrioridad(duties, prioridad);
+    seccionTareas.innerHTML = "";
     paintTareas(listaFiltradaXPrioridad);
+    console.log(listaFiltradaXPrioridad);
 
 }
 
