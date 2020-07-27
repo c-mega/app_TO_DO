@@ -1,4 +1,4 @@
-//capturar los elementos con los que voy a interactuar
+//capturo los elementos con los que voy a interactuar
 
 let botonGuardar = document.getElementById('guardar');
 let inputTarea = document.getElementById('tarea');
@@ -20,7 +20,6 @@ function capturarDatosUser(event) {
 
     if (tareas != "" && prioridades != "" && prioridades != "Selecciona una prioridad") {/* si ninguno de los dos campos estan vaciod */
 
-        /*  console.log(nombre, aficion); //Con esto, la información que metes en el formulario se pinta en consola */
 
         const newTarea = {
             id: contadorTareas,
@@ -40,7 +39,7 @@ function capturarDatosUser(event) {
 
 };
 
-function paintTarea(pTarea) { /* PINTA UNA TAREA */
+function paintTarea(pTarea) { /* PINTO UNA TAREA */
 
     let priorityColor = "";
     switch (pTarea.prioridad.toLowerCase()) {
@@ -70,7 +69,7 @@ function paintTarea(pTarea) { /* PINTA UNA TAREA */
 
 
 
-function paintTareas(pListaTareas) { /* PINTA LA LISTA DE TAREAS */
+function paintTareas(pListaTareas) { /* PINTO UNA LISTA DE TAREAS */
     seccionTareas.innerHTML += "";
 
     pListaTareas.forEach(tarea => {
@@ -80,9 +79,9 @@ function paintTareas(pListaTareas) { /* PINTA LA LISTA DE TAREAS */
 }
 
 function borrarTarea(pTareaBorrar) {
-    let tareaBorrar = document.getElementById(pTareaBorrar); //primero capturo paraselecc que voy a borrar
+    let tareaBorrar = document.getElementById(pTareaBorrar); //1º capturo 
     seccionTareas.removeChild(tareaBorrar);
-    borrar(tareaBorrar.dataset.id); //para borrarlo del array
+    borrar(tareaBorrar.dataset.id); //lo borro del array
 
 }
 
@@ -103,7 +102,7 @@ let inputTareaXNombre = document.querySelector('#nombredetarea');
 /* function capturarBusquedaTareas(event) {
     let nombreTarea = inputTareaXNombre.value.toLowerCase();
 
-    console.log(nombreTarea);  //en consola se pinta 
+    console.log(nombreTarea);  //en consola consigo pintarlo 
 
     let listaFiltradaXTarea = buscarXNombreTarea(duties, nombreTarea);
     seccionTareas.innerHTML = "";
@@ -129,6 +128,8 @@ let selectPrioridad = document.querySelector('#buscarPrioridad');
     }
     }
  */
+
+
 
 //Junto ambos filtros
 
